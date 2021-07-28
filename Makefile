@@ -54,7 +54,7 @@ VALGRIND_MEMCHECK = valgrind --leak-check=full --gen-suppressions=all \
 CC ?= cc
 
 # Experimental use of Protobuf C++ library, primarily used to validate JSON output matches Protobuf JSON mapping
-CXX_SRC_FILES := src/pg_query_outfuncs_protobuf_cpp.cc protobuf/pg_query.pb.cc
+CXX_SRC_FILES := src/pg_query_outfuncs_protobuf_cpp.cc protobuf/pg_query.pb.cc src/pg_query_deparse_cpp.cc
 ifeq ($(USE_PROTOBUF_CPP),1)
 	override CXXFLAGS += `pkg-config --cflags protobuf` -I. -I./src/postgres/include -DHAVE_PTHREAD -std=c++11 -Wall -Wno-unused-function -Wno-zero-length-array -Wno-c99-extensions -fwrapv -fPIC
 	ifeq ($(DEBUG),1)
